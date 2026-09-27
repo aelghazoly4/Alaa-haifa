@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>لوحة التحكم | هيفا &amp; علاء</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Noto+Naskh+Arabic:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after{ box-sizing: border-box; }
+html, body{ margin: 0; }
+:root{
+  --wine:#5A1622; --wine-2:#47101A; --wine-3:#7a2434;
+  --cream:#F5EFE0; --cream-2:#FBF8F0; --cream-deep:#ECE3CC;
+  --gold:#C4875A; --gold-deep:#B8794C; --gold-pale:#F1E2CC;
+  --ink:#423C30; --ink-soft:#837A68;
+  --ok:#2f7a4f; --ok-bg:#e3f1e8; --no:#a23a3a; --no-bg:#f6e1e1;
+  --line:rgba(90,22,34,.14);
+  --shadow:0 10px 30px rgba(50,20,20,.10);
+  --font:'Noto Naskh Arabic', serif; --display:'Aref Ruqaa', serif; --num:'Cormorant Garamond', serif;
+}
+body{
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font);
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+button{ font: inherit; cursor: pointer; }
+[hidden]{ display: none !important; }
+
+/* ---------- login ---------- */
+.login{
+  min-height: 100vh;
+  display: grid; place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #7a2434 0%, transparent 60%),
+    linear-gradient(160deg, var(--wine) 0%, var(--wine-2) 100%);
+}
+.login-card{
+  width: 100%; max-width: 380px;
+  background: var(--cream-2);
+  border-radius: 22px;
+  padding: 38px 30px 30px;
+  text-align: center;
+  box-shadow: 0 30px 70px rgba(0,0,0,.35);
+  border: 1px solid rgba(196,135,90,.5);
+}
+.seal{
+  width: 64px; height: 64px; margin: 0 auto 14px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 35% 30%, #e6b985, var(--gold-deep));
+  color: #fff; font-family: var(--num); font-weight: 600; font-size: 24px;
+  box-shadow: 0 8px 18px rgba(120,70,30,.35);
+}
+.login h1{ font-family: var(--display); color: var(--wine); font-size: 30px; margin: 0 0 4px; }
+.login p{ color: var(--ink-soft); margin: 0 0 22px; font-size: 15px; }
+.field{ text-align: start; margin-bottom: 14px; }
+.field label{ display: block; font-weight: 700; font-size: 14px; margin-bottom: 6px; }
+.field input{
+  width: 100%; padding: 13px 15px;
+  border: 1px solid var(--line); border-radius: 12px;
+  background: #fff; font: inherit; color: var(--ink);
+}
+.field input:focus{ outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(196,135,90,.22); }
+.btn{
+  border: none; border-radius: 12px; padding: 13px 18px; font-weight: 700; font-size: 15px;
+  background: var(--wine); color: #F6EBDD; transition: background .2s, transform .1s;
+}
+.btn:hover{ background: var(--wine-2); }
+.btn:active{ transform: scale(.98); }
+.btn.block{ width: 100%; }
+.btn.ghost{ background: transparent; color: var(--wine); border: 1px solid var(--line); }
+.btn.ghost:hover{ background: var(--gold-pale); }
+.btn:disabled{ opacity: .6; cursor: wait; }
+.err{ color: var(--no); font-size: 14px; min-height: 22px; margin: 10px 0 0; }
+
+/* ---------- dashboard ---------- */
+.topbar{
+  position: sticky; top: 0; z-index: 10;
+  background: linear-gradient(160deg, var(--wine) 0%, var(--wine-2) 100%);
+  color: #F6EBDD;
+  box-shadow: 0 6px 20px rgba(60,10,20,.25);
+}
+.topbar-in{
+  max-width: 1100px; margin: 0 auto; padding: 14px 20px;
+  display: flex; align-items: center; gap: 14px;
+}
+.brand{ display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+.brand .seal{ width: 42px; height: 42px; font-size: 17px; margin: 0; flex-shrink: 0; }
+.brand h2{ font-family: var(--display); font-size: 23px; margin: 0; line-height: 1.2; }
+.brand small{ color: #E3C7C1; font-size: 13px; }
+.topbar .btn.ghost{ color: #F6EBDD; border-color: rgba(246,235,221,.35); padding: 9px 14px; font-size: 14px; }
+.topbar .btn.ghost:hover{ background: rgba(255,255,255,.1); }
+
+main{ max-width: 1100px; margin: 0 auto; padding: 26px 20px 60px; }
+
+.stats{ display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 26px; }
+.stat{
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px 18px 16px;
+  box-shadow: var(--shadow);
+  position: relative; overflow: hidden;
+}
+.stat::before{ content:""; position:absolute; top:0; right:0; left:0; height:4px; background: var(--c, var(--gold)); }
+.stat .n{ display:block; font-family: var(--num); font-weight: 600; font-size: 44px; line-height: 1.05; color: var(--wine); }
+.stat .l{ color: var(--ink-soft); font-size: 14.5px; }
+.stat.yes{ --c: var(--ok); } .stat.yes .n{ color: var(--ok); }
+.stat.no{ --c: var(--no); } .stat.no .n{ color: var(--no); }
+
+.panel{
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+.tools{
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  padding: 16px; border-bottom: 1px solid var(--line);
+}
+.search{
+  flex: 1; min-width: 180px;
+  padding: 11px 14px; border-radius: 12px; border: 1px solid var(--line);
+  background: #fff; font: inherit;
+}
+.search:focus{ outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(196,135,90,.22); }
+.chips{ display: flex; gap: 6px; }
+.chip{
+  border: 1px solid var(--line); background: #fff; color: var(--ink);
+  border-radius: 999px; padding: 8px 15px; font-size: 14px; font-weight: 600;
+}
+.chip.on{ background: var(--wine); color: #F6EBDD; border-color: var(--wine); }
+
+table{ width: 100%; border-collapse: collapse; }
+th{
+  text-align: start; font-size: 13px; color: var(--ink-soft); font-weight: 600;
+  padding: 12px 16px; background: var(--cream);
+}
+td{ padding: 15px 16px; border-top: 1px solid var(--line); vertical-align: top; }
+td.name{ font-weight: 700; color: var(--wine); white-space: nowrap; }
+td.msg{ max-width: 380px; color: var(--ink); word-break: break-word; white-space: pre-wrap; }
+td.msg.empty{ color: #b9b09c; }
+td.date{ color: var(--ink-soft); font-size: 13.5px; white-space: nowrap; }
+.badge{
+  display: inline-block; padding: 3px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; white-space: nowrap;
+}
+.badge.yes{ background: var(--ok-bg); color: var(--ok); }
+.badge.no{ background: var(--no-bg); color: var(--no); }
+.del{
+  border: none; background: transparent; color: #b48a8a; font-size: 18px; padding: 4px 8px; border-radius: 8px;
+}
+.del:hover{ background: var(--no-bg); color: var(--no); }
+.empty-state{ text-align: center; padding: 50px 20px; color: var(--ink-soft); }
+.foot{ text-align: center; color: var(--ink-soft); font-size: 13px; margin-top: 16px; }
+
+@media (max-width: 760px){
+  .stats{ grid-template-columns: repeat(2, 1fr); }
+  .stat .n{ font-size: 36px; }
+  thead{ display: none; }
+  table, tbody, tr, td{ display: block; width: 100%; }
+  tr{ padding: 14px 16px; border-top: 1px solid var(--line); position: relative; }
+  td{ border: none; padding: 2px 0; }
+  td.name{ font-size: 17px; padding-inline-end: 40px; }
+  td.msg{ max-width: none; padding: 6px 0; }
+  td.act{ position: absolute; top: 10px; left: 10px; width: auto; }
+  .brand small{ display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= LOGIN ================= -->
+<div class="login" id="login" hidden>
+  <form class="login-card" id="login-form">
+    <div class="seal">H&amp;A</div>
+    <h1>لوحة التحكم</h1>
+    <p>أدخل كلمة المرور لعرض ردود الحضور</p>
+    <div class="field">
+      <label for="pw">كلمة المرور</label>
+      <input type="password" id="pw" autocomplete="current-password" required autofocus>
+    </div>
+    <button class="btn block" id="login-btn" type="submit">دخول</button>
+    <p class="err" id="login-err" role="alert"></p>
+  </form>
+</div>
+
+<!-- ================= DASHBOARD ================= -->
+<div id="app" hidden>
+  <div class="topbar">
+    <div class="topbar-in">
+      <div class="brand">
+        <div class="seal">H&amp;A</div>
+        <div>
+          <h2>هيفا &amp; علاء</h2>
+          <small>ردود الحضور · الجمعة 16 أكتوبر 2026</small>
+        </div>
+      </div>
+      <button class="btn ghost" id="refresh" type="button">تحديث</button>
+      <button class="btn ghost" id="logout" type="button">خروج</button>
+    </div>
+  </div>
+
+  <main>
+    <section class="stats">
+      <div class="stat"><span class="n" id="s-total">0</span><span class="l">إجمالي الردود</span></div>
+      <div class="stat yes"><span class="n" id="s-yes">0</span><span class="l">سيحضرون</span></div>
+      <div class="stat no"><span class="n" id="s-no">0</span><span class="l">معتذرون</span></div>
+      <div class="stat"><span class="n" id="s-msg">0</span><span class="l">رسائل للعروسين</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="tools">
+        <input class="search" id="search" type="search" placeholder="ابحث بالاسم أو الرسالة…">
+        <div class="chips" id="chips">
+          <button class="chip on" data-f="all" type="button">الكل</button>
+          <button class="chip" data-f="yes" type="button">حاضر</button>
+          <button class="chip" data-f="no" type="button">معتذر</button>
+        </div>
+        <button class="btn ghost" id="export" type="button">تصدير Excel</button>
+      </div>
+      <table>
+        <thead><tr><th>الاسم</th><th>الرد</th><th>الرسالة</th><th>التاريخ</th><th></th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+      <div class="empty-state" id="empty" hidden>لا توجد ردود مطابقة</div>
+    </section>
+    <p class="foot" id="updated"></p>
+  </main>
+</div>
+
+<script>
+(function(){
+  const $ = (id) => document.getElementById(id);
+  let items = [];
+  let filter = 'all';
+  let timer = null;
+
+  function show(which){
+    $('login').hidden = which !== 'login';
+    $('app').hidden = which !== 'app';
+  }
+
+  async function api(path, opts){
+    const res = await fetch(path, Object.assign({ credentials: 'same-origin' }, opts));
+    let data = {};
+    try{ data = await res.json(); }catch(e){}
+    return { status: res.status, data: data };
+  }
+
+  /* ---------- auth ---------- */
+  $('login-form').addEventListener('submit', async function(e){
+    e.preventDefault();
+    const btn = $('login-btn'); const err = $('login-err');
+    err.textContent = ''; btn.disabled = true;
+    const r = await api('/api/admin/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: $('pw').value })
+    });
+    btn.disabled = false;
+    if(r.data.ok){ $('pw').value = ''; await load(); }
+    else err.textContent = r.status === 401 ? 'كلمة المرور غير صحيحة' : 'حدث خطأ، حاول مرة أخرى';
+  });
+
+  $('logout').addEventListener('click', async function(){
+    await api('/api/admin/logout', { method: 'POST' });
+    clearInterval(timer);
+    show('login');
+  });
+
+  /* ---------- data ---------- */
+  async function load(){
+    const r = await api('/api/admin/rsvps');
+    if(r.status === 401){ clearInterval(timer); show('login'); return; }
+    if(!r.data.ok){ alert('تعذر تحميل البيانات'); return; }
+    items = r.data.items;
+    $('s-total').textContent = r.data.stats.total;
+    $('s-yes').textContent   = r.data.stats.yes;
+    $('s-no').textContent    = r.data.stats.no;
+    $('s-msg').textContent   = r.data.stats.withMessage;
+    $('updated').textContent = 'آخر تحديث: ' + new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' });
+    show('app');
+    render();
+    clearInterval(timer);
+    timer = setInterval(load, 30000);
+  }
+
+  const fmt = (d) => new Date(d).toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Africa/Cairo' });
+
+  function visible(){
+    const q = $('search').value.trim().toLowerCase();
+    return items.filter(function(i){
+      if(filter !== 'all' && i.attending !== filter) return false;
+      return !q || i.name.toLowerCase().includes(q) || i.message.toLowerCase().includes(q);
+    });
+  }
+
+  function render(){
+    const list = visible();
+    const tbody = $('rows');
+    tbody.textContent = '';
+    list.forEach(function(i){
+      const tr = document.createElement('tr');
+
+      const name = document.createElement('td'); name.className = 'name'; name.textContent = i.name;
+
+      const st = document.createElement('td');
+      const badge = document.createElement('span');
+      badge.className = 'badge ' + i.attending;
+      badge.textContent = i.attending === 'yes' ? 'سيحضر' : 'معتذر';
+      st.appendChild(badge);
+
+      const msg = document.createElement('td');
+      msg.className = 'msg' + (i.message ? '' : ' empty');
+      msg.textContent = i.message || '—';
+
+      const date = document.createElement('td'); date.className = 'date'; date.textContent = fmt(i.createdAt);
+
+      const act = document.createElement('td'); act.className = 'act';
+      const del = document.createElement('button');
+      del.className = 'del'; del.type = 'button'; del.title = 'حذف'; del.textContent = '🗑';
+      del.addEventListener('click', function(){ remove(i); });
+      act.appendChild(del);
+
+      tr.append(name, st, msg, date, act);
+      tbody.appendChild(tr);
+    });
+    $('empty').hidden = list.length > 0;
+  }
+
+  async function remove(i){
+    if(!confirm('حذف رد «' + i.name + '» نهائيًا؟')) return;
+    const r = await api('/api/admin/rsvps?id=' + encodeURIComponent(i.id), { method: 'DELETE' });
+    if(r.data.ok) load(); else alert('تعذر الحذف');
+  }
+
+  /* ---------- filters / search ---------- */
+  $('search').addEventListener('input', render);
+  $('chips').addEventListener('click', function(e){
+    const b = e.target.closest('.chip'); if(!b) return;
+    filter = b.getAttribute('data-f');
+    document.querySelectorAll('.chip').forEach(function(c){ c.classList.toggle('on', c === b); });
+    render();
+  });
+  $('refresh').addEventListener('click', load);
+
+  /* ---------- export (CSV with BOM so Excel reads Arabic) ---------- */
+  $('export').addEventListener('click', function(){
+    const esc = (v) => '"' + String(v).replace(/"/g, '""').replace(/^([=+\-@])/, "'$1") + '"';
+    const rows = [['الاسم', 'الرد', 'الرسالة', 'التاريخ']].concat(visible().map(function(i){
+      return [i.name, i.attending === 'yes' ? 'سيحضر' : 'معتذر', i.message, fmt(i.createdAt)];
+    }));
+    const csv = '﻿' + rows.map(function(r){ return r.map(esc).join(','); }).join('\r\n');
+    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv;charset=utf-8' }));
+    const a = document.createElement('a');
+    a.href = url; a.download = 'rsvp-haifa-alaa.csv';
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  });
+
+  /* ---------- boot: already logged in? ---------- */
+  load().then(function(){ if($('app').hidden) show('login'); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "wedding-invitation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Wedding invitation with RSVP backend (Vercel + MongoDB) and admin dashboard",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "mongodb": "^6.8.0"
+  }
+}
