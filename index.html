@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>هيفا &amp; علاء | دعوة زفاف</title>
-<meta name="description" content="يسعدنا دعوتكم لحضور حفل زفاف هيفا و علاء - الجمعة 16 أكتوبر 2026">
+<title>هيفاء &amp; علاء | دعوة زفاف</title>
+<meta name="description" content="يسعدنا دعوتكم لحضور حفل زفاف هيفاء و علاء - الجمعة 16 أكتوبر 2026">
 <meta name="theme-color" content="#47101a">
 
 <!-- Link preview (WhatsApp / Facebook / Messenger / Instagram / Telegram / X).
      ⚠ Replace YOUR-DOMAIN.com with the real site address (3 places below) — the image URL must be absolute. -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_AR">
-<meta property="og:site_name" content="دعوة زفاف هيفا &amp; علاء">
-<meta property="og:title" content="دعوة زفاف هيفا &amp; علاء 🤍">
+<meta property="og:site_name" content="دعوة زفاف هيفاء &amp; علاء">
+<meta property="og:title" content="دعوة زفاف هيفاء &amp; علاء 🤍">
 <meta property="og:description" content="يسعدنا دعوتكم لحضور حفل زفافنا · الجمعة 16 أكتوبر 2026 · الساعة 8 مساءً">
 <meta property="og:url" content="https://YOUR-DOMAIN.com/">
 <meta property="og:image" content="assets/images/share.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="دعوة زفاف هيفا وعلاء">
+<meta property="og:image:alt" content="دعوة زفاف هيفاء وعلاء">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="دعوة زفاف هيفا &amp; علاء 🤍">
+<meta name="twitter:title" content="دعوة زفاف هيفاء &amp; علاء 🤍">
 <meta name="twitter:description" content="يسعدنا دعوتكم لحضور حفل زفافنا · الجمعة 16 أكتوبر 2026 · الساعة 8 مساءً">
 <meta name="twitter:image" content="https://YOUR-DOMAIN.com/assets/images/share.jpg">
 
@@ -296,66 +296,94 @@ section{ position: relative; }
 #lang-toggle svg{ width: 16px; height: 16px; color: var(--ink); }
 
 /* ============================================================
-   3. HERO (names + date, no video)
+   3. HERO PHOTO (shown at its own aspect ratio, uncropped —
+      the photo already has a blank band top & bottom for text)
    ============================================================ */
-.hero{
+.hero-photo{
   position: relative;
-  text-align: center;
-  padding: 92px 24px 34px;
-  background:
-    radial-gradient(ellipse at 50% 0%, #FFFDF7 0%, rgba(255,253,247,0) 62%),
-    var(--cream-2);
-  color: var(--green);
+  width: 100%;
+  aspect-ratio: 940 / 1672;
+  overflow: hidden;
+  background: var(--cream-2);
 }
-.hero::before, .hero::after{
-  content: "";
+.hero-photo img{
   position: absolute;
-  left: 18px; right: 18px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
-  opacity: .55;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* section ratio matches the photo's own ratio, so nothing is cropped */
+  display: block;
 }
-.hero::before{ top: 18px; }
-.hero::after{ bottom: 0; }
-.hero-eyebrow{
+.hero-photo-content{
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 23%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 24px;
+}
+.hero-photo-eyebrow{
   font-family: var(--font-body);
-  font-size: 17px;
-  letter-spacing: 0.22em;
-  color: var(--terracotta-deep);
-  margin: 0 0 6px;
+  font-size: 14px;
+  letter-spacing: 0.26em;
   font-weight: 600;
+  margin: 0 0 8px;
+  color: var(--terracotta-deep);
 }
-.hero-title{
+.hero-photo-title{
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 66px;
-  line-height: 1.35;
-  margin: 0 0 14px;
+  font-size: 40px;
+  line-height: 1.3;
+  margin: 0;
   color: var(--green);
 }
-.hero-title > span{ display: block; }
-.hero-title .amp{
+.hero-photo-title .amp{
+  display: inline-block;
+  margin: 0 10px;
   font-family: var(--font-accent);
   font-style: italic;
   font-weight: 500;
-  font-size: 34px;
-  line-height: 1;
   color: var(--terracotta);
-  margin: 14px 0 12px;
 }
-.hero .divider{ margin-bottom: 14px; }
-.hero-date{
+@media (max-width: 380px){
+  .hero-photo-title{ font-size: 32px; }
+  .hero-photo-eyebrow{ font-size: 12.5px; }
+}
+
+/* scroll-down cue, sitting inside the photo's own bottom white band */
+.hero-photo-scroll{
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 23%;
+  z-index: 2;
+  display: flex;
+}
+.hero-photo-scroll a{
+  margin: auto auto 22% auto;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--terracotta-deep);
+}
+.hero-photo-scroll span{
   font-family: var(--font-body);
-  font-size: 22px;
+  font-size: 17px;
   font-weight: 700;
-  color: var(--green);
-  margin: 0 0 4px;
+  letter-spacing: 0.05em;
 }
-.hero-time{
-  font-family: var(--font-body);
-  font-size: 15.5px;
-  color: var(--ink-soft);
-  margin: 0;
+.hero-photo-scroll svg{
+  width: 24px; height: 24px;
+  animation: scrollBounce 1.8s ease-in-out infinite;
+}
+@keyframes scrollBounce{
+  0%, 100%{ transform: translateY(0); opacity: .65; }
+  50%{ transform: translateY(7px); opacity: 1; }
 }
 
 .sound-toggle{
@@ -381,26 +409,6 @@ section{ position: relative; }
 .sound-toggle .icon-off{ display: none; }
 .sound-toggle.muted .icon-on{ display: none; }
 .sound-toggle.muted .icon-off{ display: block; }
-
-/* couple photo (full picture, squared frame) */
-.couple{ background: var(--cream-2); padding: 0 var(--edge) 40px; }
-.couple-frame{
-  position: relative;
-  max-width: 440px;
-  margin: 0 auto;
-  aspect-ratio: 1080 / 740;
-  border-radius: 4px;
-  overflow: hidden;
-  background: linear-gradient(160deg, var(--terracotta-pale), var(--cream-deep));
-  box-shadow: var(--shadow-md), 0 0 0 8px var(--cream-2), 0 0 0 9px var(--terracotta);
-}
-.couple-frame img{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.couple-frame .ph{
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
-  color: var(--terracotta-deep); font-size: 15px;
-}
-.couple-frame .ph svg{ width: 36px; height: 36px; }
 
 /* countdown */
 .countdown{ background: var(--cream-2); padding: 34px var(--edge) 70px; text-align: center; }
@@ -476,28 +484,90 @@ section{ position: relative; }
 .illustration-divider.fountain img{ width: 300px; }
 
 /* ============================================================
-   4b. BLESSING / VERSE
+   4b. BLESSING CARD — verse, blessing line & date on the ornate frame
    ============================================================ */
-.blessing{ background: var(--cream-2); }
-.blessing-verse{
+.blessing-card{ background: var(--cream); padding: 54px var(--edge) 58px; }
+.bc-frame{
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 800 / 1524;
+  margin: 0 auto;
+}
+.bc-bg{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 34px rgba(50,10,15,.22));
+}
+.bc-text{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 21% 15% 10%;
+}
+.bc-verse{
   font-family: var(--font-display);
-  font-size: 24px;
-  line-height: 1.9;
-  color: var(--terracotta-deep);
-  max-width: 420px;
-  margin: 0 auto 22px;
+  font-size: 19px;
+  line-height: 1.75;
+  font-weight: 700;
+  color: var(--terracotta-tint);
+  margin: 0;
 }
-.blessing-heart{
-  font-size: 15px;
-  line-height: 1;
+.bc-divider{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  margin: 12px 0;
 }
-.blessing-text{
+.bc-bar{ flex: 1; max-width: 46px; height: 1px; background: rgba(241,226,204,.4); }
+.bc-heart{ font-size: 11px; line-height: 1; color: var(--terracotta-tint); }
+.bc-line{
   font-family: var(--font-body);
-  font-size: 16.5px;
-  line-height: 1.9;
-  color: var(--ink-soft);
-  max-width: 420px;
-  margin: 22px auto 0;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(246,235,221,.88);
+  margin: 0 0 14px;
+}
+.bc-date{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(241,226,204,.3);
+  width: 78%;
+}
+.bc-day{
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  color: var(--terracotta-tint);
+}
+.bc-full{
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 19px;
+  color: #fff;
+}
+.bc-time{
+  font-family: var(--font-body);
+  font-size: 11.5px;
+  color: rgba(246,235,221,.75);
+  margin-top: 1px;
+}
+@media (max-width: 360px){
+  .bc-verse{ font-size: 14px; }
+  .bc-full{ font-size: 17px; }
 }
 
 /* ============================================================
@@ -666,130 +736,6 @@ section{ position: relative; }
 .btn-outline:last-child{ margin-bottom: 0; }
 
 /* ============================================================
-   8. RSVP
-   ============================================================ */
-.rsvp{ background: var(--cream); }
-.rsvp-deadline{
-  color: var(--ink-soft);
-  font-size: 15px;
-  margin: -6px 0 34px;
-}
-.form-card{
-  max-width: 440px;
-  margin: 0 auto;
-  background: var(--white);
-  border-radius: 22px;
-  padding: 30px 26px;
-  box-shadow: var(--shadow-md);
-  text-align: start;
-}
-.field{ margin-bottom: 22px; }
-.field > label{
-  display: block;
-  font-weight: 700;
-  font-size: 15px;
-  color: var(--ink);
-  margin-bottom: 9px;
-}
-.field input[type="text"],
-.field input[type="email"],
-.field textarea{
-  width: 100%;
-  border: 1px solid var(--line-soft);
-  border-radius: 10px;
-  padding: 13px 15px;
-  font-family: var(--font-body);
-  font-size: 15px;
-  color: var(--ink);
-  background: var(--cream-2);
-}
-.field input::placeholder, .field textarea::placeholder{ color: var(--ink-faint); }
-.field input:focus, .field textarea:focus{
-  outline: none;
-  border-color: var(--terracotta);
-  background: var(--white);
-}
-.field textarea{ min-height: 108px; resize: vertical; }
-
-.radio-row{
-  display: flex;
-  gap: 26px;
-  flex-wrap: wrap;
-}
-.radio-opt{
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 9px;
-  font-size: 15px;
-  color: var(--ink);
-  cursor: pointer;
-}
-.radio-opt input{
-  appearance: none;
-  width: 19px; height: 19px;
-  border-radius: 50%;
-  border: 1.5px solid var(--terracotta);
-  display: grid;
-  place-content: center;
-  margin: 0;
-  flex-shrink: 0;
-}
-.radio-opt input::before{
-  content: "";
-  width: 10px; height: 10px;
-  border-radius: 50%;
-  background: var(--terracotta);
-  transform: scale(0);
-  transition: transform .15s ease;
-}
-.radio-opt input:checked::before{ transform: scale(1); }
-
-.btn-solid{
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: var(--green);
-  color: var(--on-green);
-  border: none;
-  border-radius: 12px;
-  padding: 17px 18px;
-  font-weight: 700;
-  font-size: 16px;
-  font-family: var(--font-body);
-  margin-top: 6px;
-  transition: background .2s ease;
-}
-.btn-solid:hover{ background: var(--green-2); }
-.btn-solid svg{ width: 18px; height: 18px; transform: scaleX(-1); }
-.btn-solid:disabled{ opacity: .65; cursor: wait; }
-.form-error{ color: #a23a3a; font-size: 14px; margin: 0 0 10px; min-height: 0; }
-.form-error:empty{ display: none; }
-
-.rsvp-success{
-  display: none;
-  text-align: center;
-  padding: 30px 10px;
-}
-.rsvp-success.show{ display: block; }
-.rsvp-success svg{
-  width: 46px; height: 46px;
-  color: var(--terracotta-deep);
-  margin: 0 auto 16px;
-}
-.rsvp-success h3{
-  font-family: var(--font-body);
-  font-size: 20px;
-  color: var(--ink);
-  margin: 0 0 8px;
-}
-.rsvp-success p{ color: var(--ink-soft); font-size: 15px; margin: 0; }
-.form-card.submitted form{ display: none; }
-
-/* ============================================================
    10. TRAVEL
    ============================================================ */
 .travel{ background: var(--cream); }
@@ -897,45 +843,44 @@ section{ position: relative; }
     <span id="lang-toggle-label">EN</span>
   </button>
 
-  <!-- ================= HERO ================= -->
-  <header class="hero" id="home">
-    <p class="hero-eyebrow" data-ar="حفل زفاف" data-en="Wedding Celebration">حفل زفاف</p>
-    <h1 class="hero-title"><span data-ar="هيفا" data-en="Haifa">هيفا</span><span class="amp">&amp;</span><span data-ar="علاء" data-en="Alaa">علاء</span></h1>
-    <div class="divider">
-      <span class="bar"></span>
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c0 6.6 5.4 12 12 12-6.6 0-12 5.4-12 12 0-6.6-5.4-12-12-12 6.6 0 12-5.4 12-12z"/></svg>
-      <span class="bar"></span>
+  <!-- ================= HERO PHOTO ================= -->
+  <section class="hero-photo">
+    <img src="assets/images/hero.jpg" alt="حفل زفاف هيفاء وعلاء">
+    <div class="hero-photo-content reveal">
+      <p class="hero-photo-eyebrow" data-ar="حفل زفاف" data-en="Wedding Celebration">حفل زفاف</p>
+      <h1 class="hero-photo-title"><span data-ar="هيفاء" data-en="Haifa">هيفاء</span><span class="amp">&amp;</span><span data-ar="علاء" data-en="Alaa">علاء</span></h1>
     </div>
-    <p class="hero-date" data-ar="الجمعة 16 أكتوبر 2026" data-en="Friday, October 16, 2026">الجمعة 16 أكتوبر 2026</p>
-    <p class="hero-time" data-ar="من الساعة 8:00 مساءً حتى 12:00 منتصف الليل" data-en="8:00 PM until 12:00 AM">من الساعة 8:00 مساءً حتى 12:00 منتصف الليل</p>
-  </header>
+    <div class="hero-photo-scroll">
+      <a href="#home">
+        <span data-ar="انزل لأسفل" data-en="Scroll Down">انزل لأسفل</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+    </div>
+  </section>
 
   <button class="sound-toggle" id="sound-toggle" type="button" aria-label="تشغيل / كتم الصوت">
     <svg class="icon-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
     <svg class="icon-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M23 9l-6 6M17 9l6 6"/></svg>
   </button>
 
-  <!-- ================= BLESSING / VERSE ================= -->
-  <section class="blessing pad">
-    <div class="center reveal">
-      <p class="blessing-verse" data-ar="ومن آياته أن خلق لكم من أنفسكم أزواجًا لتسكنوا إليها وجعل بينكم مودة ورحمة" data-en="&quot;And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.&quot;">ومن آياته أن خلق لكم من أنفسكم أزواجًا لتسكنوا إليها وجعل بينكم مودة ورحمة</p>
-      <div class="divider">
-        <span class="bar"></span>
-        <span class="blessing-heart">🤍</span>
-        <span class="bar"></span>
+  <!-- ================= BLESSING CARD (verse + date, on the ornate frame) ================= -->
+  <section class="blessing-card" id="home">
+    <div class="bc-frame reveal">
+      <img class="bc-bg" src="assets/images/blessing-frame.webp" alt="">
+      <div class="bc-text">
+        <p class="bc-verse" data-ar="ومن آياته أن خلق لكم من أنفسكم أزواجًا لتسكنوا إليها وجعل بينكم مودة ورحمة" data-en="&quot;And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.&quot;">ومن آياته أن خلق لكم من أنفسكم أزواجًا لتسكنوا إليها وجعل بينكم مودة ورحمة</p>
+        <div class="bc-divider">
+          <span class="bc-bar"></span>
+          <span class="bc-heart">🤍</span>
+          <span class="bc-bar"></span>
+        </div>
+        <p class="bc-line" data-ar="الحمد لله الذي جمع بين قلبين، وبفضله تبدأ اليوم أجمل حكاياتنا" data-en="Praise be to God who brought two hearts together — and by His grace, our most beautiful story begins today.">الحمد لله الذي جمع بين قلبين، وبفضله تبدأ اليوم أجمل حكاياتنا</p>
+        <div class="bc-date">
+          <span class="bc-day" data-ar="الجمعة" data-en="Friday">الجمعة</span>
+          <span class="bc-full" data-ar="16 أكتوبر 2026" data-en="October 16, 2026">16 أكتوبر 2026</span>
+          <span class="bc-time" data-ar="من الساعة 8:00 حتى الساعة 12:00 مساءً" data-en="8:00 PM – 12:00 AM">من الساعة 8:00 حتى الساعة 12:00 مساءً</span>
+        </div>
       </div>
-      <p class="blessing-text" data-ar="الحمد لله الذي جمع بين قلبين، وبفضله تبدأ اليوم أجمل حكاياتنا. ننتظر أن تكتمل فرحتنا بوجودكم معنا في ليلة العمر، لنحتفل سويًا ببداية مشوارنا الجديد. ✨" data-en="Praise be to God who brought two hearts together — and by His grace, our most beautiful story begins today. We look forward to our joy being complete with you by our side on this night of a lifetime, as we celebrate the start of our new journey together. ✨">الحمد لله الذي جمع بين قلبين، وبفضله تبدأ اليوم أجمل حكاياتنا. ننتظر أن تكتمل فرحتنا بوجودكم معنا في ليلة العمر، لنحتفل سويًا ببداية مشوارنا الجديد. ✨</p>
-    </div>
-  </section>
-
-  <!-- ================= COUPLE PHOTO ================= -->
-  <section class="couple reveal">
-    <div class="couple-frame">
-      <div class="ph">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg>
-        <span>صورة العروسين</span>
-      </div>
-      <img src="assets/images/couple.jpg" alt="هيفا وعلاء" onerror="this.style.display='none'">
     </div>
   </section>
 
@@ -1023,61 +968,9 @@ section{ position: relative; }
     </div>
   </section>
 
-  <!-- ================= RSVP ================= -->
-  <section class="rsvp pad" id="rsvp">
-    <div class="center reveal">
-      <p class="eyebrow" data-ar="تفضل بزيارتنا" data-en="We'd Love to See You">تفضل بزيارتنا</p>
-      <h2 class="section-title" data-ar="من فضلك، أرسل رد" data-en="Kindly RSVP">من فضلك، أرسل رد</h2>
-      <div class="divider">
-        <span class="bar"></span>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.5C.7 8.9 2.4 5 6 5c2 0 3.5 1.2 4.5 2.6C11.5 6.2 13 5 15 5c3.6 0 5.3 3.9 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
-        <span class="bar"></span>
-      </div>
-      <p class="rsvp-deadline" data-ar="يرجى تأكيد حضوركم قبل 16 أكتوبر 2026" data-en="Please confirm your attendance before October 16, 2026">يرجى تأكيد حضوركم قبل 16 أكتوبر 2026</p>
-    </div>
-
-    <div class="form-card reveal" id="form-card">
-      <form id="rsvp-form" novalidate>
-        <div class="field">
-          <label for="f-name" data-ar="الاسم الكامل *" data-en="Full Name *">الاسم الكامل *</label>
-          <input type="text" id="f-name" name="name" placeholder="اكتب اسمك الكامل" data-ph-ar="اكتب اسمك الكامل" data-ph-en="Your full name" required>
-        </div>
-        <div class="field">
-          <label data-ar="هل ستكون هناك؟" data-en="Will you be attending?">هل ستكون هناك؟</label>
-          <div class="radio-row">
-            <label class="radio-opt">
-              <input type="radio" name="attending" value="yes" required>
-              <span data-ar="أقبل بكل سرور" data-en="Joyfully Accept">أقبل بكل سرور</span>
-            </label>
-            <label class="radio-opt">
-              <input type="radio" name="attending" value="no" required>
-              <span data-ar="أرفض بأسف" data-en="Regretfully Decline">أرفض بأسف</span>
-            </label>
-          </div>
-        </div>
-        <div class="field">
-          <label for="f-message" data-ar="رسالة للعروسين" data-en="Message for the Couple">رسالة للعروسين</label>
-          <textarea id="f-message" name="message" placeholder="شارك رسالتك للعروسين..." data-ph-ar="شارك رسالتك للعروسين..." data-ph-en="Share your wishes..."></textarea>
-        </div>
-        <input type="text" name="website" id="f-website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-        <p class="form-error" id="rsvp-error" role="alert"></p>
-        <button class="btn-solid" id="rsvp-btn" type="submit">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-          <span data-ar="إرسال الرد" data-en="Send RSVP">إرسال الرد</span>
-        </button>
-      </form>
-
-      <div class="rsvp-success" id="rsvp-success">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M8 12.5l2.5 2.5L16 9"/></svg>
-        <h3 data-ar="شكرًا لكم!" data-en="Thank you!">شكرًا لكم!</h3>
-        <p data-ar="تم استلام ردكم بنجاح. نتطلع لرؤيتكم." data-en="Your response has been received. We can't wait to see you.">تم استلام ردكم بنجاح. نتطلع لرؤيتكم.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- ================= FOOTER ================= -->
   <footer class="footer">
-    <p class="footer-names">هيفا &amp; علاء</p>
+    <p class="footer-names">هيفاء &amp; علاء</p>
     <p class="footer-sub" data-ar="الجمعة 16 أكتوبر 2026" data-en="Friday, October 16, 2026">الجمعة 16 أكتوبر 2026</p>
     <svg class="footer-heart" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7-4.35-9.5-8.5C.7 8.9 2.4 5 6 5c2 0 3.5 1.2 4.5 2.6C11.5 6.2 13 5 15 5c3.6 0 5.3 3.9 3.5 7.5C19 16.65 12 21 12 21z"/></svg>
   </footer>
@@ -1180,7 +1073,7 @@ document.documentElement.classList.add('intro-active');
       'DTSTAMP:' + new Date().toISOString().replace(/[-:]/g,'').split('.')[0] + 'Z',
       'DTSTART:20261016T200000',
       'DTEND:20261017T000000',
-      'SUMMARY:حفل زفاف هيفا و علاء',
+      'SUMMARY:حفل زفاف هيفاء و علاء',
       'DESCRIPTION:يسعدنا حضوركم حفل زفافنا',
       'LOCATION:صالة بلازا هول - نادي بردى - المزرعة - دمشق',
       'END:VEVENT',
@@ -1198,53 +1091,6 @@ document.documentElement.classList.add('intro-active');
   });
 })();
 
-/* ---------- RSVP form (saved to MongoDB through /api/rsvp) ---------- */
-(function(){
-  const form = document.getElementById('rsvp-form');
-  const card = document.getElementById('form-card');
-  const success = document.getElementById('rsvp-success');
-  const btn = document.getElementById('rsvp-btn');
-  const errEl = document.getElementById('rsvp-error');
-
-  const MSG = {
-    ar: { fail: 'تعذر إرسال ردك الآن، حاول مرة أخرى.', name: 'من فضلك اكتب اسمك.' },
-    en: { fail: 'We could not send your reply. Please try again.', name: 'Please enter your name.' }
-  };
-
-  form.addEventListener('submit', async function(e){
-    e.preventDefault();
-    errEl.textContent = '';
-    const L = (document.documentElement.lang === 'en') ? MSG.en : MSG.ar;
-    if(!form.checkValidity()){
-      form.reportValidity();
-      return;
-    }
-
-    const payload = {
-      name: document.getElementById('f-name').value.trim(),
-      attending: form.querySelector('input[name="attending"]:checked').value,
-      message: document.getElementById('f-message').value.trim(),
-      website: document.getElementById('f-website').value
-    };
-    if(payload.name.length < 2){ errEl.textContent = L.name; return; }
-
-    btn.disabled = true;
-    try{
-      const res = await fetch('/api/rsvp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      });
-      const data = await res.json().catch(function(){ return {}; });
-      if(!res.ok || !data.ok) throw new Error('failed');
-      card.classList.add('submitted');
-      success.classList.add('show');
-    }catch(err){
-      errEl.textContent = L.fail;
-      btn.disabled = false;
-    }
-  });
-})();
 
 /* ---------- Scroll reveal ---------- */
 (function(){
