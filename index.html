@@ -355,6 +355,80 @@ section{ position: relative; }
   .hero-photo-eyebrow{ font-size: 12.5px; }
 }
 
+/* falling particles — a fixed layer over the whole invitation,
+   visible continuously on every section as the page scrolls */
+.ambient-fx{
+  position: fixed;
+  inset: 0;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 35;
+}
+
+/* small things falling straight down from the top, continuously */
+.pt{
+  position: absolute;
+  top: -6%;
+  background: var(--terracotta);
+  opacity: 0;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  will-change: top, transform, opacity;
+}
+.pt.dot{ border-radius: 50%; }
+.pt.diamond{ border-radius: 2px; }
+
+@keyframes ptFallA{
+  0%{ top: -6%; opacity: 0; transform: translateX(0) rotate(0deg); }
+  10%{ opacity: .8; }
+  50%{ transform: translateX(14px) rotate(160deg); }
+  90%{ opacity: .8; }
+  100%{ top: 106%; opacity: 0; transform: translateX(-6px) rotate(320deg); }
+}
+@keyframes ptFallB{
+  0%{ top: -6%; opacity: 0; transform: translateX(0) rotate(0deg); }
+  10%{ opacity: .7; }
+  50%{ transform: translateX(-16px) rotate(-140deg); }
+  90%{ opacity: .7; }
+  100%{ top: 106%; opacity: 0; transform: translateX(8px) rotate(-300deg); }
+}
+@keyframes ptFallC{
+  0%{ top: -6%; opacity: 0; transform: translateX(0) rotate(0deg); }
+  10%{ opacity: .75; }
+  50%{ transform: translateX(9px) rotate(90deg); }
+  90%{ opacity: .75; }
+  100%{ top: 106%; opacity: 0; transform: translateX(-12px) rotate(260deg); }
+}
+
+.pt-1{  left: 2%;  width: 6px; height: 6px; animation-name: ptFallA; animation-duration: 9s;  animation-delay: -1s;  }
+.pt-2{  left: 6%;  width: 8px; height: 8px; animation-name: ptFallC; animation-duration: 12s; animation-delay: -8s;  }
+.pt-3{  left: 11%; width: 5px; height: 5px; animation-name: ptFallB; animation-duration: 10s; animation-delay: -3s;  }
+.pt-4{  left: 16%; width: 7px; height: 7px; animation-name: ptFallA; animation-duration: 8s;  animation-delay: -6s;  }
+.pt-5{  left: 21%; width: 6px; height: 6px; animation-name: ptFallC; animation-duration: 11s; animation-delay: -2s;  }
+.pt-6{  left: 27%; width: 9px; height: 9px; animation-name: ptFallB; animation-duration: 13s; animation-delay: -9s;  }
+.pt-7{  left: 32%; width: 5px; height: 5px; animation-name: ptFallA; animation-duration: 9s;  animation-delay: -4s;  }
+.pt-8{  left: 38%; width: 7px; height: 7px; animation-name: ptFallC; animation-duration: 10s; animation-delay: -7s;  }
+.pt-9{  left: 43%; width: 6px; height: 6px; animation-name: ptFallB; animation-duration: 12s; animation-delay: -1s;  }
+.pt-10{ left: 49%; width: 8px; height: 8px; animation-name: ptFallA; animation-duration: 11s; animation-delay: -10s; }
+.pt-11{ left: 54%; width: 5px; height: 5px; animation-name: ptFallC; animation-duration: 9s;  animation-delay: -5s;  }
+.pt-12{ left: 59%; width: 7px; height: 7px; animation-name: ptFallB; animation-duration: 14s; animation-delay: -12s; }
+.pt-13{ left: 65%; width: 6px; height: 6px; animation-name: ptFallA; animation-duration: 10s; animation-delay: -3s;  }
+.pt-14{ left: 70%; width: 9px; height: 9px; animation-name: ptFallC; animation-duration: 13s; animation-delay: -8s;  }
+.pt-15{ left: 75%; width: 5px; height: 5px; animation-name: ptFallB; animation-duration: 8s;  animation-delay: -2s;  }
+.pt-16{ left: 80%; width: 7px; height: 7px; animation-name: ptFallA; animation-duration: 12s; animation-delay: -11s; }
+.pt-17{ left: 86%; width: 6px; height: 6px; animation-name: ptFallC; animation-duration: 9s;  animation-delay: -6s;  }
+.pt-18{ left: 91%; width: 8px; height: 8px; animation-name: ptFallB; animation-duration: 11s; animation-delay: -4s;  }
+.pt-19{ left: 96%; width: 5px; height: 5px; animation-name: ptFallA; animation-duration: 10s; animation-delay: -9s;  }
+.pt-20{ left: 9%;  width: 6px; height: 6px; animation-name: ptFallB; animation-duration: 15s; animation-delay: -13s; }
+.pt-21{ left: 24%; width: 7px; height: 7px; animation-name: ptFallC; animation-duration: 14s; animation-delay: -5s;  }
+.pt-22{ left: 40%; width: 5px; height: 5px; animation-name: ptFallA; animation-duration: 13s; animation-delay: -10s; }
+.pt-23{ left: 56%; width: 8px; height: 8px; animation-name: ptFallB; animation-duration: 9s;  animation-delay: -7s;  }
+.pt-24{ left: 72%; width: 6px; height: 6px; animation-name: ptFallC; animation-duration: 15s; animation-delay: -1s;  }
+.pt-25{ left: 88%; width: 7px; height: 7px; animation-name: ptFallA; animation-duration: 11s; animation-delay: -12s; }
+.pt-26{ left: 62%; width: 5px; height: 5px; animation-name: ptFallB; animation-duration: 10s; animation-delay: -6s;  }
+
 /* scroll-down cue, sitting inside the photo's own bottom white band */
 .hero-photo-scroll{
   position: absolute;
@@ -833,6 +907,36 @@ section{ position: relative; }
     <img src="assets/images/logo.png" alt="">
     <span class="envelope-cta" data-ar="اضغط للفتح" data-en="Tap to open">اضغط للفتح</span>
   </button>
+</div>
+
+<!-- ================= FALLING PARTICLES (fixed over the whole invitation) ================= -->
+<div class="ambient-fx" aria-hidden="true">
+  <span class="pt dot pt-1"></span>
+  <span class="pt diamond pt-2"></span>
+  <span class="pt dot pt-3"></span>
+  <span class="pt diamond pt-4"></span>
+  <span class="pt dot pt-5"></span>
+  <span class="pt diamond pt-6"></span>
+  <span class="pt dot pt-7"></span>
+  <span class="pt diamond pt-8"></span>
+  <span class="pt dot pt-9"></span>
+  <span class="pt diamond pt-10"></span>
+  <span class="pt dot pt-11"></span>
+  <span class="pt diamond pt-12"></span>
+  <span class="pt dot pt-13"></span>
+  <span class="pt diamond pt-14"></span>
+  <span class="pt dot pt-15"></span>
+  <span class="pt diamond pt-16"></span>
+  <span class="pt dot pt-17"></span>
+  <span class="pt diamond pt-18"></span>
+  <span class="pt dot pt-19"></span>
+  <span class="pt diamond pt-20"></span>
+  <span class="pt dot pt-21"></span>
+  <span class="pt diamond pt-22"></span>
+  <span class="pt dot pt-23"></span>
+  <span class="pt diamond pt-24"></span>
+  <span class="pt dot pt-25"></span>
+  <span class="pt diamond pt-26"></span>
 </div>
 
 <div class="page" id="page">
